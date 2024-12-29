@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cremería Angy</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scripts.js"></script>
+    <style>
+        /* Diseño base del index */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa; /* Fondo beige muy claro */
+            color: #333; /* Texto oscuro para buen contraste */
+            line-height: 1.6;
+        }
+
+        /* Cabecera */
+        header {
+            background-color: #1e2a47; /* Azul oscuro */
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+            header .logo-container {
+                display: inline-block;
+                margin-bottom: 20px;
+                padding: 15px;
+                border-radius: 50%;
+                background-color: white; /* Fondo blanco para resaltar el logo */
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombra más fuerte para destacar el logo */
+            }
+
+            header img {
+                width: 220px; /* Tamaño moderado para el logo */
+                height: auto;
+                border-radius: 50%;
+            }
+
+            header h1 {
+                font-size: 36px;
+                font-weight: bold;
+                margin: 10px 0;
+                text-transform: uppercase;
+                color: #f0e68c; /* Amarillo suave */
+            }
+
+        /* Sección Bienvenida */
+        .welcome {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #e0f7fa; /* Azul muy suave */
+            color: #333; /* Texto oscuro para contraste */
+        }
+
+            .welcome h2 {
+                font-size: 34px;
+                color: #1e2a47; /* Azul oscuro para el título */
+                margin-bottom: 20px;
+            }
+
+            .welcome p {
+                font-size: 18px;
+                color: #333;
+                max-width: 800px;
+                margin: 0 auto 30px;
+            }
+
+        /* Botones de navegación */
+        .button-container {
+            text-align: center;
+        }
+
+            .button-container a {
+                display: inline-block;
+                background-color: #ffb6b9; /* Rosado suave */
+                color: #333; /* Texto oscuro para los botones */
+                padding: 14px 30px;
+                text-decoration: none;
+                margin: 12px;
+                border-radius: 8px;
+                font-size: 18px;
+                transition: background-color 0.3s ease;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            }
+
+                .button-container a:hover {
+                    background-color: #f7a1a1; /* Rosado más intenso en hover */
+                }
+
+        /* Sección de promociones */
+        .promotions {
+            display: none;
+            text-align: center;
+            padding: 30px;
+            background-color: #f8f9fa;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .promotions h3 {
+                font-size: 30px;
+                color: #1e2a47; /* Azul oscuro */
+                margin-bottom: 20px;
+            }
+
+            .promotions ul {
+                list-style: none;
+                padding: 0;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .promotions li {
+                background-color: #fff;
+                padding: 15px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+
+                .promotions li:hover {
+                    transform: translateY(-5px);
+                }
+
+                .promotions li p {
+                    font-size: 18px;
+                    color: #333;
+                    margin: 10px 0;
+                }
+
+                .promotions li span {
+                    font-size: 20px;
+                    color: #ff4081; /* Color llamativo para resaltar el descuento */
+                    font-weight: bold;
+                }
+
+        /* Testimonios */
+        .testimonials {
+            text-align: center;
+            padding: 60px 20px;
+            background-color: #f1f1f1; /* Gris claro */
+        }
+
+            .testimonials h2 {
+                font-size: 32px;
+                color: #1e2a47; /* Azul oscuro */
+                margin-bottom: 30px;
+            }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: #ffffff; /* Fondo blanco */
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra fuerte */
+            transition: transform 0.3s ease;
+        }
+
+            .testimonial:hover {
+                transform: translateY(-10px); /* Efecto hover más destacado */
+            }
+
+            .testimonial p {
+                font-style: italic;
+                color: #333; /* Texto oscuro para los testimonios */
+            }
+
+            .testimonial strong {
+                display: block;
+                margin-top: 10px;
+                font-weight: bold;
+                color: #1e2a47; /* Azul oscuro para los nombres */
+            }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #1e2a47; /* Azul oscuro */
+            color: white;
+        }
+    </style>
+
+    <script>
+        // Función para mostrar/ocultar las promociones
+        function togglePromotions() {
+            const promotionsSection = document.getElementById('promotions');
+            promotionsSection.style.display = (promotionsSection.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo-container">
+            <img src="467153206_562179393257166_9102977723174905315_n.jpg" alt="Logo Cremería Angy" class="logo">
+        </div>
+        <h1>Bienvenidos a Cremería Angy</h1>
+    </header>
+
+    <!-- Sección Bienvenida -->
+    <section class="welcome">
+        <h2>¡Bienvenidos!</h2>
+        <p>Cremería Angy te ofrece los mejores productos lácteos, embutidos y abarrotes frescos. Calidad y sabor garantizados.</p>
+        <div class="button-container">
+            <a href="productos.html" class="btn">Productos 🛒</a>
+            <a href="nosotros.html" class="btn">Acerca de Nosotros ℹ️</a>
+            <!-- Botón Dirección con enlace de Google Maps -->
+            <a href="https://maps.app.goo.gl/mTyFJjk9abDCBpoG8?g_st=ig" target="_blank" class="btn">Dirección 📍</a>
+            <!-- Botón Promociones que muestra/oculta las promociones -->
+            <a href="javascript:void(0);" class="btn" onclick="togglePromotions()">Promociones 🏷️</a>
+            <!-- Botón Contacto con correo -->
+            <a href="mailto:emi.morenomaciel@gmail.com" class="btn">Correo 📧</a>
+            <!-- Botón Teléfono solo para marcar el número -->
+            <a href="tel:+525584582025" class="btn">Teléfono 📱</a>
+            <!-- Enlaces de redes sociales -->
+            <a href="https://www.facebook.com/share/1A1nFMN4iJ/?mibextid=LQQJ4d" target="_blank" class="btn">Facebook 👍</a>
+            <a href="https://www.instagram.com/cremeria.angy/profilecard/?igsh=aXNyMTB0NHdka2hm" target="_blank" class="btn">Instagram 📸</a>
+        </div>
+    </section>
+
+    <!-- Sección de promociones -->
+    <section id="promotions" class="promotions">
+        <h3>¡Aprovecha nuestras promociones!</h3>
+        <ul>
+            <li>
+                <h4>Descuento del 10% en todos los productos lácteos</h4>
+                <p>Oferta válida hasta el 31 de diciembre.</p>
+                <span>-10%</span>
+            </li>
+            <li>
+                <h4>Compra uno y lleva otro gratis en embutidos seleccionados</h4>
+                <p>¡Solo este mes!</p>
+                <span>2x1</span>
+            </li>
+            <li>
+                <h4>10% de descuento en compras mayores a $500</h4>
+                <p>Oferta válida hasta agotar existencias.</p>
+                <span>-10%</span>
+            </li>
+            <li>
+                <h4>15% de descuento en la compra de productos enlatados</h4>
+                <p>Oferta válida hasta el 15 de enero.</p>
+                <span>-15%</span>
+            </li>
+            <li>
+                <h4>Compra 2 y obtén un descuento del 20% en quesos</h4>
+                <p>Solo este mes.</p>
+                <span>-20%</span>
+            </li>
+            <li>
+                <h4>2x1 en jugos y bebidas lácteas</h4>
+                <p>¡Solo hasta fin de mes!</p>
+                <span>2x1</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <h2>Comentarios Positivos</h2>
+        <div class="testimonial-grid">
+            <div class="testimonial"><p>"Productos frescos y deliciosos."</p><strong>- Juan Pérez</strong></div>
+            <div class="testimonial"><p>"Excelente atención al cliente."</p><strong>- Ana Gómez</strong></div>
+            <div class="testimonial"><p>"Siempre encuentro lo que busco, 100% recomendado."</p><strong>- Luis Martínez</strong></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Cremería Angy. Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
